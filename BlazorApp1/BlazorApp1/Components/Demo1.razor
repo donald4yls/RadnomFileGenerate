@@ -1,0 +1,11 @@
+﻿<h3>Demo1</h3>
+
+<button @attributes = "AdditionalAttributes" class="@ClassString" @onclick="OnClick">
+    @if (!string.IsNullOrWhiteSpace(Icon))
+    {
+        <i class="@Icon"></i>
+        <span></span>
+    }
+    @Text
+</button>
+

@@ -1,0 +1,15 @@
+﻿@using BlazorApp1.Data;
+<div class="dialog-title">
+    <h2>@ToDoItem.Title</h2>
+</div>
+
+<div class="dialog-buttons">
+    <button class="btn btn-secondary mr-auto" @onclick="OnCancel">Cancel</button>
+    <button class="btn btn-success ml-auto" @onclick="OnConfirm">OK</button>
+</div>
+
+@code {
+    [Parameter] public TodoItem ToDoItem { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+    [Parameter] public EventCallback OnConfirm { get; set; }
+}

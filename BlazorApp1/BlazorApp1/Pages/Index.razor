@@ -1,0 +1,56 @@
+﻿@page "/"
+@using BlazorApp1.Data;
+@using BlazorApp1.Components;
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+<ul>
+    <li>Last multiple of two = @LastMultipleOfTwo</li>
+    <li>Last multiple of three = @LastMultipleOfThree</li>
+</ul>
+
+<div>
+    <Counter OnMultipleOfThree=@UpdateLastMultipleOfThreeValue
+             OnMultipleOfTwoAction=@UpdateLastMultipleOfTwoValue />
+</div>
+
+
+<div>
+    <TemplatedDialog Show="isShow">
+        <ConfigItem ToDoItem="todoItem" />
+    </TemplatedDialog>
+</div>
+
+@code
+{
+    TodoItem todoItem;
+    bool isShow;
+
+    int LastMultipleOfTwo = 0;
+    int LastMultipleOfThree = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        isShow = false;
+        todoItem = new TodoItem()
+            {
+                Title = "Test 1",
+                IsDone = false
+            };
+    }
+
+    private Task UpdateLastMultipleOfThreeValue(int value)
+    {
+        LastMultipleOfThree = value;
+        isShow = true;
+        return Task.CompletedTask;
+    }
+
+    private void UpdateLastMultipleOfTwoValue(int value)
+    {
+        isShow = false;
+        LastMultipleOfTwo = value;
+    }
+}
